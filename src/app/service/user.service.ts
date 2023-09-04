@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IUsers } from '../model/users.model';
+import { IUser } from '../model/user.model';
 
 
 
@@ -9,28 +11,26 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  apiUrl = 'http://localhost:8000/api/users';
-
+  private apiUrl = 'http://localhost:8000/api/users';
 
 
   constructor(private http: HttpClient) { }
 
-  allUsers(){
-    return this.http.get(this.apiUrl);
+
+  allUsers(): Observable<IUsers>{
+    return this.http.get<IUsers>(this.apiUrl);
   }
 
-  insert(user: any){
-    return this.http.post(this.apiUrl, user);
+  getUser(id: number): Observable<IUser>{
+    return this.http.get<IUsers>(`${this.apiUrl}/${id}`);
   }
 
-  update(id: number, user: any){
-    return this.http.put(this.apiUrl, user);
+  put(values: IUser): Observable<IUser>{
+    return this.http.put<IUsers>(this.apiUrl, values);
   }
 
-  delete(id: number){
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  delete(value: IUser): Observable<IUser>{
+    return this.http.delete<IUsers>(this.apiUrl);
   }
-
-
 
 }

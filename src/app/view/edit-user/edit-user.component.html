@@ -1,0 +1,18 @@
+
+<div class="container">
+
+    <form [formGroup]="editUser" (ngSubmit)="post(editUser.value)">
+        <div class="formGroup">
+          <label for="nombre">Nombre:</label><br>
+          <input type="text" class="form-control" formControlName="name"><br>
+
+          <label for="nombre">Apellido:</label><br>
+          <input type="text" class="form-control" formControlName="surname"><br><br>
+
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">Eliminar</button>
+        </div>
+    </form>
+
+</div>
+

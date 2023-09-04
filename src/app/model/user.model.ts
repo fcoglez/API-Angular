@@ -1,5 +1,4 @@
-export class User {
-  id: number = 0;
-  name: string = '';
-  surname: string = '';
+export interface IUser {
+  name: string;
+  surname: string;
 }
