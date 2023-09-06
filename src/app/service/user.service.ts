@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUsers } from '../model/users.model';
-import { IUser } from '../model/user.model';
+import { IUser } from 'src/app/model/user.model';
 
 
 
@@ -21,16 +21,20 @@ export class UserService {
     return this.http.get<IUsers>(this.apiUrl);
   }
 
-  getUser(id: number): Observable<IUser>{
+  getUser(id: number): Observable<IUsers>{
     return this.http.get<IUsers>(`${this.apiUrl}/${id}`);
   }
 
-  put(values: IUser): Observable<IUser>{
-    return this.http.put<IUsers>(this.apiUrl, values);
+  put(values: IUsers): Observable<IUsers> {
+    return this.http.put<IUsers>(`${this.apiUrl}/${values.id}`, values);
   }
 
-  delete(value: IUser): Observable<IUser>{
+  delete(value: IUsers): Observable<IUsers>{
     return this.http.delete<IUsers>(this.apiUrl);
+  }
+
+  post(value: IUser): Observable<IUser>{
+    return this.http.post<IUser>(this.apiUrl, value);
   }
 
 }

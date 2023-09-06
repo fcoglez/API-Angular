@@ -14,6 +14,7 @@ export class EditUserComponent {
 
   user: any;
   editUser = new FormGroup({
+    id: new FormControl(''),
     name: new FormControl(''),
     surname: new FormControl(''),
   });
@@ -27,20 +28,26 @@ export class EditUserComponent {
       this.user = data;
       dataUser.push(data);
       this.editUser.setValue({
+        id: idUser,
         name: this.user.name,
         surname: this.user.surname,
       });
     });
+
   }
 
   post(values: any){
     this.userService.put(values).subscribe(data => {
-      console.log(data);
+        console.log(data);
     });
   }
 
   delete(){
     console.log("eliminado");
+  }
+
+  exit(){
+    this.router.navigate(['dashboard']);
   }
 
 

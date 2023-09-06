@@ -1,1 +1,16 @@
-<p>new-user works!</p>
+<div class="container">
+
+  <h1>Nuevo Usuario</h1>
+  
+  <form [formGroup]="newUser" (ngSubmit)="post(newUser.value)">
+    <div class="formGroup">
+      <label for="nombre">Nombre:</label><br>
+      <input type="text" class="form-control" formControlName="name"><br>
+
+      <label for="nombre">Apellido:</label><br>
+      <input type="text" class="form-control" formControlName="surname"><br><br>
+
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+    </div>
+</form></div>
